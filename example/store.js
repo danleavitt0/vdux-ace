@@ -15,7 +15,7 @@ import client from 'vdux-client'
 const middleware = [
   effects,
   events(),
-  logger
+  logger()
 ]
 
 /**

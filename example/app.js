@@ -2,7 +2,7 @@ import element from 'virtex-element'
 import Ace from '../src/index'
 
 require('brace/mode/javascript')
-require('brace/theme/github')
+require('brace/theme/tomorrow_night')
 
 function initialState () {
   return {
@@ -10,15 +10,12 @@ function initialState () {
   }
 }
 
-console.log(Ace)
-
 function render ({props, state}) {
-  console.log(props, state)
   return (
     <div>
       <Ace
         mode='javascript'
-        theme='github'
+        theme='tomorrow_night'
         {...props} />
     </div>
   )
