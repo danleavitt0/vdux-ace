@@ -13,7 +13,9 @@ import App from './app'
  * Setup store
  */
 
-const store = createStore({})
+const store = createStore({
+  app: {}
+})
 
 /**
  * App
@@ -22,7 +24,7 @@ const store = createStore({})
 store.dispatch(handleOnce('domready', () => {
   vdux(
     store,
-    state => <App {...state} />,
+    state => <App key='app' {...state} />,
     document.body
   )
 }))

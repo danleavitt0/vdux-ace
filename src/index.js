@@ -1,10 +1,7 @@
 import element from 'virtex-element'
 import ace from 'brace'
-import handleActions from '@f/handle-actions'
-import createAction from '@f/create-action'
-import combineReducers from '@f/combine-reducers'
 
-var editor
+let editor
 
 const defaultProps = {
   name: 'brace-editor',
@@ -28,8 +25,7 @@ const defaultProps = {
   wrapEnabled: false
 }
 
-function afterMount ({props, local}) {
-  props = {...defaultProps, ...props}
+function initEditor (props) {
   const {
       name,
       onBeforeLoad,
@@ -46,23 +42,62 @@ function afterMount ({props, local}) {
       tabSize,
       showPrintMargin,
       keyboardHandler,
-      onLoad,
+      onLoad
   } = props
 
-  setTimeout(() => {
-    editor = ace.edit(name)
-    editor.getSession().setMode(`ace/mode/${mode}`)
-    editor.setTheme(`ace/theme/${theme}`)
-    editor.setFontSize(fontSize)
-    editor.setValue(value, cursorStart)
-    editor.renderer.setShowGutter(showGutter)
-    editor.getSession().setUseWrapMode(wrapEnabled)
-    editor.setOption('maxLines', maxLines)
-    editor.setOption('readOnly', readOnly)
-    editor.setOption('highlightActiveLine', highlightActiveLine)
-    editor.setOption('tabSize', tabSize)
-    editor.setShowPrintMargin(showPrintMargin)
-  })
+  editor = ace.edit(name)
+  editor.getSession().setMode(`ace/mode/${mode}`)
+  editor.setTheme(`ace/theme/${theme}`)
+  editor.setFontSize(fontSize)
+  editor.setValue(value, cursorStart)
+  editor.renderer.setShowGutter(showGutter)
+  editor.getSession().setUseWrapMode(wrapEnabled)
+  editor.setOption('maxLines', maxLines)
+  editor.setOption('readOnly', readOnly)
+  editor.setOption('highlightActiveLine', highlightActiveLine)
+  editor.setOption('tabSize', tabSize)
+  editor.setShowPrintMargin(showPrintMargin)
+  editor.on('focus', onFocus)
+  editor.on('blur', onBlur)
+  editor.on('copy', onCopy)
+  editor.on('paste', onPaste)
+  editor.on('change', onChange)
+
+  function onChange () {
+    if (props.onChange && !this.silent) {
+      var value = editor.getValue()
+      props.onChange(value)
+    }
+  }
+
+  function onFocus () {
+    if (props.onFocus) {
+      props.onFocus()
+    }
+  }
+
+  function onBlur () {
+    if (props.onBlur) {
+      props.onBlur()
+    }
+  }
+
+  function onCopy (text) {
+    if (props.onCopy) {
+      props.onCopy(text)
+    }
+  }
+
+  function onPaste (text) {
+    if (this.props.onPaste) {
+      props.onPaste(text)
+    }
+  }
+}
+
+function afterMount ({props, local}) {
+  props = {...defaultProps, ...props}
+  setTimeout(initEditor.bind(null, props))
 }
 
 function render ({props, state, local}) {
@@ -78,37 +113,6 @@ function render ({props, state, local}) {
       className={className}
       style={divStyle} />
   )
-
-  function onChange() {
-    if (this.props.onChange && !this.silent) {
-      var value = this.editor.getValue();
-      this.props.onChange(value);
-    }
-  }
-
-  function onFocus() {
-    if (this.props.onFocus) {
-      this.props.onFocus();
-    }
-  }
-
-  function onBlur() {
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    }
-  }
-
-  function onCopy(text) {
-    if (this.props.onCopy) {
-      this.props.onCopy(text);
-    }
-  }
-
-  function onPaste(text) {
-    if (this.props.onPaste) {
-      this.props.onPaste(text);
-    }
-  }
 }
 
 export default {

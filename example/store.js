@@ -6,7 +6,7 @@ import events from 'redux-effects-events'
 import effects from 'redux-effects'
 import logger from 'redux-logger'
 import reducer from './reducer'
-import client from 'vdux-client'
+import client from 'vdux-preset-client'
 
 /**
  * Middleware
