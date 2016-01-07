@@ -25,7 +25,6 @@
     "redux-logger": "^2.3.1",
     "rimraf": "^2.4.4",
     "vdux": "^1.0.2",
-    "vdux-client": "^0.2.3",
     "@f/combine-reducers": "^1.2.0",
     "@f/create-action": "^1.1.1",
     "@f/handle-actions": "^1.1.1",
@@ -33,7 +32,6 @@
     "redux-effects-events": "^0.2.5",
     "redux-ephemeral": "^0.1.9",
     "vdux-preset-client": "^0.2.3",
-    "garnish": "^5.0.1",
     "virtex": "^0.1.18"
   },
   "dependencies": {

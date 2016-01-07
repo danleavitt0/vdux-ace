@@ -25,7 +25,7 @@ const defaultProps = {
   wrapEnabled: false
 }
 
-function initEditor (props) {
+function initEditor (props, ref) {
   const {
       name,
       onBeforeLoad,
@@ -45,6 +45,7 @@ function initEditor (props) {
       onLoad
   } = props
 
+  let element = document.getElementById(name)
   editor = ace.edit(name)
   editor.getSession().setMode(`ace/mode/${mode}`)
   editor.setTheme(`ace/theme/${theme}`)
@@ -57,50 +58,25 @@ function initEditor (props) {
   editor.setOption('highlightActiveLine', highlightActiveLine)
   editor.setOption('tabSize', tabSize)
   editor.setShowPrintMargin(showPrintMargin)
-  editor.on('focus', onFocus)
-  editor.on('blur', onBlur)
-  editor.on('copy', onCopy)
-  editor.on('paste', onPaste)
-  editor.on('change', onChange)
-
-  function onChange () {
-    if (props.onChange && !this.silent) {
-      var value = editor.getValue()
-      props.onChange(value)
-    }
-  }
-
-  function onFocus () {
-    if (props.onFocus) {
-      props.onFocus()
-    }
-  }
-
-  function onBlur () {
-    if (props.onBlur) {
-      props.onBlur()
-    }
-  }
-
-  function onCopy (text) {
-    if (props.onCopy) {
-      props.onCopy(text)
-    }
-  }
-
-  function onPaste (text) {
-    if (this.props.onPaste) {
-      props.onPaste(text)
-    }
-  }
+  editor.on('change', () => element.click())
+  editor.on('focus', () => element.focus())
+  editor.on('blur', () => element.blur())
+  editor.on('copy', text => {
+    let evt = new Event('copy', {'bubbles': true, 'cancelable': false})
+    return element.dispatchEvent(evt, text)
+  })
+  editor.on('paste', () => {
+    let evt = new Event('paste', {'bubbles': true, 'cancelable': false})
+    return element.dispatchEvent(evt)
+  })
 }
 
-function afterMount ({props, local}) {
+function afterMount ({props, local, ref}) {
   props = {...defaultProps, ...props}
-  setTimeout(initEditor.bind(null, props))
+  setTimeout(initEditor.bind(null, props, ref))
 }
 
-function render ({props, state, local}) {
+function render ({props, state, local, ref}) {
   props = {...defaultProps, ...props}
   var divStyle = {
     width: props.width,
@@ -111,8 +87,48 @@ function render ({props, state, local}) {
     <div
       id={props.name}
       className={className}
-      style={divStyle} />
+      style={divStyle}
+      ref={ref.as('container')}
+      onFocus={onFocus}
+      onClick={onChange}
+      onCopy={onCopy}
+      onBlur={onBlur}
+      onPaste={onPaste} />
   )
+
+  function onFocus () {
+    if (props.onFocus) {
+      return props.onFocus()
+    }
+  }
+
+  function onBlur () {
+    if (props.onBlur) {
+      return props.onBlur()
+    }
+  }
+
+  // this.silent
+  function onChange () {
+    if (props.onChange) {
+      var value = editor.getValue()
+      return props.onChange(value)
+    }
+  }
+
+  function onCopy (text) {
+    console.log('copy')
+    if (props.onCopy) {
+      return props.onCopy(text)
+    }
+  }
+
+  function onPaste (text) {
+    console.log('paste')
+    if (props.onPaste) {
+      props.onPaste(text)
+    }
+  }
 }
 
 export default {

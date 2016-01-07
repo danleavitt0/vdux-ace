@@ -15,45 +15,28 @@ function initialState () {
   }
 }
 
-function render ({props, state, local, key, ...model}) {
-  console.log(props, state, model)
+function render ({props, state, local}) {
+  console.log(props, state)
   return (
     <div>
       <Ace
         mode='javascript'
         theme='tomorrow_night'
-        onChange={saveText}
+        onFocus={local(saveText)}
+        onChange={local(saveText)}
         {...props} />
     </div>
   )
 }
 
-// function handleChange (code) {
-//   return {
-//     type: 'CHANGE',
-//     payload: code
-//   }
-// }
-
-// const reducer = combineReducers({
-//   text: handleActions({
-//     [saveText]: (state, code) => code
-//   })
-// })
-
-function reducer (state, action) {
-  switch (action.type) {
-    case 'SAVE_TEXT':
-      console.log(action.payload)
-      return {
-        ...state,
-        text: action.payload
-      }
-  }
-}
+const reducer = combineReducers({
+  text: handleActions({
+    [saveText]: (state, code) => code
+  })
+})
 
 export default {
   initialState,
-  reducer,
-  render
+  render,
+  reducer
 }
