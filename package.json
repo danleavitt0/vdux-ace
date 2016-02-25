@@ -4,7 +4,9 @@
   "description": "A vdux component for Ace/Brace",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf lib",
+    "build": "npm run clean && babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,11 @@
     "babel-preset-stage-2": "^6.1.2",
     "babelify": "^7.2.0",
     "budo": "^7.0.4",
-    "redux-logger": "^2.3.1",
-    "rimraf": "^2.4.4",
+    "rimraf": "^2.4.4"
+  },
+  "dependencies": {
+    "brace": "^0.7.0",
+    "virtex-element": "^0.1.5",
     "vdux": "^1.0.2",
     "@f/combine-reducers": "^1.2.0",
     "@f/create-action": "^1.1.1",
@@ -33,9 +38,5 @@
     "redux-ephemeral": "^0.1.9",
     "vdux-preset-client": "^0.2.3",
     "virtex": "^0.1.18"
-  },
-  "dependencies": {
-    "brace": "^0.7.0",
-    "virtex-element": "^0.1.5"
   }
 }
