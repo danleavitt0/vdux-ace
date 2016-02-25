@@ -27,16 +27,16 @@
     "rimraf": "^2.4.4"
   },
   "dependencies": {
-    "brace": "^0.7.0",
-    "virtex-element": "^0.1.5",
-    "vdux": "^1.0.2",
     "@f/combine-reducers": "^1.2.0",
     "@f/create-action": "^1.1.1",
     "@f/handle-actions": "^1.1.1",
+    "brace": "^0.7.0",
     "redux-effects": "^0.4.0",
     "redux-effects-events": "^0.2.5",
     "redux-ephemeral": "^0.1.9",
+    "vdux": "^2.3.4",
     "vdux-preset-client": "^0.2.3",
-    "virtex": "^0.1.18"
+    "virtex": "^0.1.18",
+    "virtex-element": "^0.1.5"
   }
 }

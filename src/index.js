@@ -1,4 +1,4 @@
-import element from 'virtex-element'
+import element from 'vdux/element'
 import ace from 'brace'
 
 let editor
@@ -71,7 +71,7 @@ function initEditor (props) {
   })
 }
 
-function afterMount ({props, local}) {
+function onCreate ({props, local}) {
   props = {...defaultProps, ...props}
   setTimeout(initEditor.bind(null, props))
 }
@@ -130,5 +130,5 @@ function render ({props, state, local}) {
 
 export default {
   render,
-  afterMount
+  onCreate
 }
