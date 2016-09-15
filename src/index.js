@@ -2,6 +2,7 @@ import element from 'virtex-element'
 import ace from 'brace'
 
 let editor
+let lastNum
 
 const defaultProps = {
   name: 'brace-editor',
@@ -76,12 +77,23 @@ function onCreate ({props, local}) {
   setTimeout(initEditor.bind(null, props))
 }
 
+function trace (lineNum) {
+  if (lastNum) {
+    editor.getSession().removeMarker(lastNum);
+  }
+  if (lineNum) {
+    lastNum = vm.session.highlightLines(lineNum - 1);
+  } else {
+    lastNum = null;
+  }
+}
+
 function render ({props, state, local}) {
   props = {...defaultProps, ...props}
   const {activeLine} = props
 
   if (editor) {
-    editor.getSession().highlightLines(activeLine)
+    trace(activeLine)
   }
 
   var divStyle = {
