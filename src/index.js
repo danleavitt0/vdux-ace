@@ -71,7 +71,7 @@ function initEditor (props) {
   })
 }
 
-function afterRender ({props, local}) {
+function onCreate ({props, local}) {
   props = {...defaultProps, ...props}
   setTimeout(initEditor.bind(null, props))
 }
@@ -79,6 +79,7 @@ function afterRender ({props, local}) {
 function render ({props, state, local}) {
   props = {...defaultProps, ...props}
   const {activeLine} = props
+  editor.getSession().highlightLines(activeLine)
 
   var divStyle = {
     width: props.width,
@@ -96,8 +97,6 @@ function render ({props, state, local}) {
       onBlur={onBlur}
       onPaste={onPaste} />
   )
-
-  editor.getSession().highlightLines(activeLine)
 
   function onFocus () {
     if (props.onFocus) {
@@ -134,5 +133,5 @@ function render ({props, state, local}) {
 
 export default {
   render,
-  afterRender
+  onCreate
 }
