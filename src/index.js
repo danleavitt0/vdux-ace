@@ -81,7 +81,7 @@ function trace (lineNum) {
   if (lastNum) {
     editor.getSession().removeMarker(lastNum.id);
   }
-  if (lineNum) {
+  if (lineNum >= 0) {
     lastNum = editor.getSession().highlightLines(lineNum);
   } else {
     lastNum = null;
