@@ -71,7 +71,7 @@ function initEditor (props) {
   })
 }
 
-function afterMount ({props, local}) {
+function afterRender ({props, local}) {
   props = {...defaultProps, ...props}
   setTimeout(initEditor.bind(null, props))
 }
@@ -120,14 +120,12 @@ function render ({props, state, local}) {
   }
 
   function onCopy (text) {
-    console.log('copy')
     if (props.onCopy) {
       return props.onCopy(text)
     }
   }
 
   function onPaste (text) {
-    console.log('paste')
     if (props.onPaste) {
       props.onPaste(text)
     }
@@ -136,5 +134,5 @@ function render ({props, state, local}) {
 
 export default {
   render,
-  afterMount
+  afterRender
 }
