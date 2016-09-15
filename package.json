@@ -1,6 +1,6 @@
 {
   "name": "vdux-ace",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A vdux component for Ace/Brace",
   "main": "lib/index.js",
   "scripts": {
