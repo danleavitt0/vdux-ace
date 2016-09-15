@@ -79,7 +79,10 @@ function onCreate ({props, local}) {
 function render ({props, state, local}) {
   props = {...defaultProps, ...props}
   const {activeLine} = props
-  editor.getSession().highlightLines(activeLine)
+
+  if (editor) {
+    editor.getSession().highlightLines(activeLine)
+  }
 
   var divStyle = {
     width: props.width,
