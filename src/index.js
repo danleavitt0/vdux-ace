@@ -1,8 +1,5 @@
 import element from 'virtex-element'
-if (window != undefined) {
-  var ace = require('brace')
-  return
-}
+import ace from 'brace'
 
 let editor
 
@@ -80,8 +77,8 @@ function afterMount ({props, local, ref}) {
 }
 
 function render ({props, state, local, ref}) {
-  const {activeLine} = props
   props = {...defaultProps, ...props}
+  const {activeLine} = props
 
   var divStyle = {
     width: props.width,
@@ -101,7 +98,7 @@ function render ({props, state, local, ref}) {
       onPaste={onPaste} />
   )
 
-  editor.getSession().highlightLines(activeLine - 1)
+  editor.getSession().highlightLines(activeLine)
 
   function onFocus () {
     if (props.onFocus) {
@@ -124,12 +121,14 @@ function render ({props, state, local, ref}) {
   }
 
   function onCopy (text) {
+    console.log('copy')
     if (props.onCopy) {
       return props.onCopy(text)
     }
   }
 
   function onPaste (text) {
+    console.log('paste')
     if (props.onPaste) {
       props.onPaste(text)
     }
