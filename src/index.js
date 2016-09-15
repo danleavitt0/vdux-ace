@@ -25,7 +25,7 @@ const defaultProps = {
   wrapEnabled: false
 }
 
-function initEditor (props, ref) {
+function initEditor (props) {
   const {
       name,
       onBeforeLoad,
@@ -71,12 +71,12 @@ function initEditor (props, ref) {
   })
 }
 
-function afterMount ({props, local, ref}) {
+function afterMount ({props, local}) {
   props = {...defaultProps, ...props}
-  setTimeout(initEditor.bind(null, props, ref))
+  setTimeout(initEditor.bind(null, props))
 }
 
-function render ({props, state, local, ref}) {
+function render ({props, state, local}) {
   props = {...defaultProps, ...props}
   const {activeLine} = props
 
@@ -90,7 +90,6 @@ function render ({props, state, local, ref}) {
       id={props.name}
       className={className}
       style={divStyle}
-      ref={ref.as('container')}
       onFocus={onFocus}
       onClick={onChange}
       onCopy={onCopy}
