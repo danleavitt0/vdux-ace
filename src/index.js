@@ -84,16 +84,13 @@ function render ({props, state, local}) {
     editor.getSession().highlightLines(activeLine)
   }
 
-  var divStyle = {
-    width: props.width,
-    height: props.height
-  }
   var className = props.className
   return (
     <div
       id={props.name}
       className={className}
-      style={divStyle}
+      width={props.width}
+      height={props.height}
       onFocus={onFocus}
       onClick={onChange}
       onCopy={onCopy}
