@@ -82,7 +82,7 @@ function trace (lineNum) {
     editor.getSession().removeMarker(lastNum);
   }
   if (lineNum) {
-    lastNum = vm.session.highlightLines(lineNum - 1);
+    lastNum = editor.getSession().highlightLines(lineNum);
   } else {
     lastNum = null;
   }
