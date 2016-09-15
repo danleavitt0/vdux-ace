@@ -89,8 +89,8 @@ function render ({props, state, local}) {
     <div
       id={props.name}
       className={className}
-      width={props.width}
-      height={props.height}
+      w={props.width}
+      h={props.height}
       onFocus={onFocus}
       onClick={onChange}
       onCopy={onCopy}
