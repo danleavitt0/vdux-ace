@@ -79,7 +79,7 @@ function onCreate ({props, local}) {
 
 function trace (lineNum) {
   if (lastNum) {
-    editor.getSession().removeMarker(lastNum);
+    editor.getSession().removeMarker(lastNum.id);
   }
   if (lineNum) {
     lastNum = editor.getSession().highlightLines(lineNum);
