@@ -1,3 +1,5 @@
+/** @jsx element */
+
 import element from 'vdux/element'
 import ace from 'brace'
 
@@ -40,9 +42,11 @@ function initEditor (props) {
       readOnly,
       highlightActiveLine,
       tabSize,
+      jsOptions,
       showPrintMargin,
       keyboardHandler,
-      onLoad
+      onLoad,
+      autocomplete
   } = props
 
   let element = document.getElementById(name)
@@ -57,16 +61,18 @@ function initEditor (props) {
   editor.setOption('readOnly', readOnly)
   editor.setOption('highlightActiveLine', highlightActiveLine)
   editor.setOption('tabSize', tabSize)
+  editor.session.$worker.call('setOptions', [jsOptions])
+  editor.setOption('enableLiveAutocompletion', autocomplete)
   editor.setShowPrintMargin(showPrintMargin)
   editor.on('change', () => element.click())
   editor.on('focus', () => element.focus())
   editor.on('blur', () => element.blur())
-  editor.on('copy', text => {
-    let evt = new Event('copy', {'bubbles': true, 'cancelable': false})
+  editor.on('copy', (text) => {
+    let evt = new window.Event('copy', {'bubbles': true, 'cancelable': false})
     return element.dispatchEvent(evt, text)
   })
   editor.on('paste', () => {
-    let evt = new Event('paste', {'bubbles': true, 'cancelable': false})
+    let evt = new window.Event('paste', {'bubbles': true, 'cancelable': false})
     return element.dispatchEvent(evt)
   })
 }
@@ -110,8 +116,9 @@ function render ({props, state, local}) {
   // this.silent
   function onChange () {
     if (props.onChange) {
+      var changeHandlers = [...props.onChange]
       var value = editor.getValue()
-      return props.onChange(value)
+      return changeHandlers.map((f) => f(value))
     }
   }
 

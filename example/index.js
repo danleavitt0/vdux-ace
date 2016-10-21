@@ -3,28 +3,21 @@
  * Imports
  */
 
-import {handleOnce} from 'redux-effects-events'
-import element from 'virtex-element'
-import createStore from './store'
+import element from 'vdux/element'
+import reducer from './reducer'
 import vdux from 'vdux/dom'
+import ready from 'domready'
 import App from './app'
-
-/**
- * Setup store
- */
-
-const store = createStore({
-  app: {}
-})
+import flow from 'redux-flo'
 
 /**
  * App
  */
 
-store.dispatch(handleOnce('domready', () => {
-  vdux(
-    store,
-    state => <App {...state} />,
-    document.body
-  )
-}))
+const {subscribe, render} = vdux({reducer, middleware: [flow()]})
+
+ready(() => {
+  subscribe((state) => {
+    render(<App {...state}/>)
+  })
+})
