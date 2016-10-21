@@ -43,11 +43,11 @@ function initEditor (props) {
       readOnly,
       highlightActiveLine,
       tabSize,
-      jsOptions,
+      jsOptions = {},
       showPrintMargin,
       keyboardHandler,
       onLoad,
-      autocomplete
+      autocomplete = false
   } = props
 
   let element = document.getElementById(name)
