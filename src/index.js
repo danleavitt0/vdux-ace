@@ -4,6 +4,7 @@ import element from 'vdux/element'
 import ace from 'brace'
 
 let editor
+let lastNum
 
 const defaultProps = {
   name: 'brace-editor',
@@ -82,8 +83,25 @@ function onCreate ({props, local}) {
   setTimeout(initEditor.bind(null, props))
 }
 
+function trace (lineNum) {
+  if (lastNum) {
+    editor.getSession().removeMarker(lastNum.id)
+  }
+  if (lineNum >= 0) {
+    lastNum = editor.getSession().highlightLines(lineNum)
+  } else {
+    lastNum = null
+  }
+}
+
 function render ({props, state, local}) {
   props = {...defaultProps, ...props}
+  const {activeLine} = props
+
+  if (editor) {
+    trace(activeLine)
+  }
+
   var divStyle = {
     width: props.width,
     height: props.height
