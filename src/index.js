@@ -60,6 +60,7 @@ function initEditor (props) {
   editor.getSession().setUseWrapMode(wrapEnabled)
   editor.setOption('maxLines', maxLines)
   editor.setOption('readOnly', readOnly)
+  editor.$blockScrolling = Infinity
   editor.setOption('highlightActiveLine', highlightActiveLine)
   editor.setOption('tabSize', tabSize)
   editor.session.$worker.call('setOptions', [jsOptions])
@@ -100,6 +101,7 @@ function render ({props, state, local}) {
 
   if (editor) {
     trace(activeLine)
+    if (props.ref) props.ref(editor.setValue.bind(editor))
   }
 
   var divStyle = {
@@ -134,9 +136,8 @@ function render ({props, state, local}) {
   // this.silent
   function onChange () {
     if (props.onChange) {
-      var changeHandlers = [...props.onChange]
       var value = editor.getValue()
-      return changeHandlers.map((f) => f(value))
+      return props.onChange(value)
     }
   }
 
