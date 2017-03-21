@@ -34,11 +34,12 @@
     "@f/combine-reducers": "^1.2.0",
     "@f/create-action": "^1.1.1",
     "@f/handle-actions": "^1.1.1",
-    "brace": "^0.7.0",
+    "@f/switch": "^1.0.1",
+    "brace": "^0.10.0",
     "domready": "^1.0.8",
     "redux-effects": "^0.4.0",
     "redux-effects-events": "^0.2.5",
     "redux-ephemeral": "^0.1.9",
-    "vdux": "^2.4.9"
+    "vdux": "^3.0.6"
   }
 }

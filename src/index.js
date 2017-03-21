@@ -1,10 +1,8 @@
 /** @jsx element */
 
-import element from 'vdux/element'
+import mw, {setValue as setNewValue, setHandlers} from './middleware'
+import {component, element} from 'vdux'
 import ace from 'brace'
-
-let editor
-let lastNum
 
 const defaultProps = {
   name: 'brace-editor',
@@ -28,7 +26,83 @@ const defaultProps = {
   wrapEnabled: false
 }
 
-function initEditor (props) {
+export {
+  mw
+}
+
+const Component = component({
+  initialState: {
+    ready: false,
+    editor: null
+  },
+  * afterRender ({props, actions, state}) {
+    if (!state.ready) {
+      yield actions.initEditor()
+    }
+  },
+  * onUpdate (prev, {state, props, actions}) {
+    if (state.ready && prev.props.activeLine !== props.activeLine) {
+      yield actions.trace(props.activeLine)
+    }
+  },
+  render ({props, state, actions}) {
+    const mergeProps = {...defaultProps, ...props}
+    const {onFocus, onCopy, onBlur, onPaste} = mergeProps
+    const {activeLine} = props
+    const {ready} = state
+
+    if (ready && props.ref) {
+      props.ref(actions)
+    }
+
+    const divStyle = {
+      width: props.width,
+      height: props.height
+    }
+
+    return (
+      <div
+        id={props.name}
+        className={props.className}
+        style={divStyle}
+        onFocus={onFocus}
+        onCopy={onCopy}
+        onBlur={onBlur}
+        onPaste={onPaste} />
+    )
+  },
+  controller: {
+    * onChange ({props, state}) {
+      yield props.onChange(state.editor.getValue())
+    },
+    * initEditor ({actions, props, path}, node) {
+      yield actions.setEditor(init({...defaultProps, ...props}))
+      yield setHandlers({path, reducer: Component.reducer})
+      yield actions.setReady()
+    },
+    * setValue ({state}, val) {
+      yield state.editor.setValue(val)
+    },
+    * trace ({props, state, actions}, line) {
+      if (state.marker) {
+        yield state.editor.getSession().removeMarker(state.marker.id)
+      }
+      if (line >= 0) {
+        yield actions.setMarker(state.editor.getSession().highlightLines(line))
+      } else {
+        yield actions.setMarker(null)
+      }
+    }
+  },
+  reducer: {
+    setEditor: (state, editor) => ({editor}),
+    setMarker: (state, marker) => ({marker}),
+    setReady: () => ({ready: true}),
+  },
+  middleware: [mw]
+})
+
+function init (props) {
   const {
       name,
       onBeforeLoad,
@@ -50,8 +124,7 @@ function initEditor (props) {
       autocomplete = false
   } = props
 
-  let element = document.getElementById(name)
-  editor = ace.edit(name)
+  const editor = ace.edit(name)
   editor.getSession().setMode(`ace/mode/${mode}`)
   editor.setTheme(`ace/theme/${theme}`)
   editor.setFontSize(fontSize)
@@ -66,95 +139,9 @@ function initEditor (props) {
   editor.session.$worker.call('setOptions', [jsOptions])
   editor.setOption('enableLiveAutocompletion', autocomplete)
   editor.setShowPrintMargin(showPrintMargin)
-  editor.on('change', () => element.click())
-  editor.on('focus', () => element.focus())
-  editor.on('blur', () => element.blur())
-  editor.on('copy', (text) => {
-    let evt = new window.Event('copy', {'bubbles': true, 'cancelable': false})
-    return element.dispatchEvent(evt, text)
-  })
-  editor.on('paste', () => {
-    let evt = new window.Event('paste', {'bubbles': true, 'cancelable': false})
-    return element.dispatchEvent(evt)
-  })
+  return editor
 }
 
-function onCreate ({props, local}) {
-  props = {...defaultProps, ...props}
-  setTimeout(initEditor.bind(null, props))
-}
+console.log(Component)
 
-function trace (lineNum) {
-  if (lastNum) {
-    editor.getSession().removeMarker(lastNum.id)
-  }
-  if (lineNum >= 0) {
-    lastNum = editor.getSession().highlightLines(lineNum)
-  } else {
-    lastNum = null
-  }
-}
-
-function render ({props, state, local}) {
-  props = {...defaultProps, ...props}
-  const {activeLine} = props
-
-  if (editor) {
-    trace(activeLine)
-    if (props.ref) props.ref(editor.setValue.bind(editor))
-  }
-
-  var divStyle = {
-    width: props.width,
-    height: props.height
-  }
-  var className = props.className
-  return (
-    <div
-      id={props.name}
-      className={className}
-      style={divStyle}
-      onFocus={onFocus}
-      onClick={onChange}
-      onCopy={onCopy}
-      onBlur={onBlur}
-      onPaste={onPaste} />
-  )
-
-  function onFocus () {
-    if (props.onFocus) {
-      return props.onFocus()
-    }
-  }
-
-  function onBlur () {
-    if (props.onBlur) {
-      return props.onBlur()
-    }
-  }
-
-  // this.silent
-  function onChange () {
-    if (props.onChange) {
-      var value = editor.getValue()
-      return props.onChange(value)
-    }
-  }
-
-  function onCopy (text) {
-    if (props.onCopy) {
-      return props.onCopy(text)
-    }
-  }
-
-  function onPaste (text) {
-    if (props.onPaste) {
-      props.onPaste(text)
-    }
-  }
-}
-
-export default {
-  render,
-  onCreate
-}
+export default Component

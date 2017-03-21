@@ -9,10 +9,6 @@
     "@f/css-default-units" "^1.0.0"
     "@f/has" "^1.0.0"
 
-"@f/array-equal@^1.1.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@f/array-equal/-/array-equal-1.2.1.tgz#ed92a6b3292f1eb8f47ff8c16e515d7cb51d07e3"
-
 "@f/array-to-promise@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@f/array-to-promise/-/array-to-promise-1.2.1.tgz#3451b7b67e440a39f69f2f8471e3fbee4d7daa1e"
@@ -39,7 +35,7 @@
     "@f/is-array" "^1.1.1"
     "@f/slice" "^1.1.2"
 
-"@f/combine-reducers@^1.2.0", "@f/combine-reducers@^1.2.1":
+"@f/combine-reducers@^1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@f/combine-reducers/-/combine-reducers-1.2.1.tgz#b85cadaefb507b0d77b73e0572b7ff50d551aae6"
   dependencies:
@@ -82,11 +78,17 @@
   dependencies:
     "@f/hyphenate" "^1.0.0"
 
-"@f/curry-once@^1.0.0", "@f/curry-once@^1.3.2":
+"@f/curry-once@^1.0.0":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@f/curry-once/-/curry-once-1.3.2.tgz#a561948a02f371e0e49772ea0a0bea7ea06283f0"
   dependencies:
     "@f/slice" "^1.1.3"
+
+"@f/curry-transparently@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@f/curry-transparently/-/curry-transparently-1.0.0.tgz#e96641cea0b1e022c38fd39e840f79a6b2699f89"
+  dependencies:
+    "@f/extend" "^1.0.0"
 
 "@f/debounce@^1.0.2":
   version "1.0.4"
@@ -120,19 +122,13 @@
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@f/equal-obj/-/equal-obj-1.2.1.tgz#7f75ea17b5c7be2034bec1079e7efdef3c55aaf1"
 
-"@f/equal@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@f/equal/-/equal-1.0.1.tgz#03761436e81c5737ca9998a2216a300f97531a63"
+"@f/event-handler@^1.0.3", "@f/event-handler@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@f/event-handler/-/event-handler-1.0.4.tgz#4b6e4dbacb0e7d6d33152bcd5aad5cf0e2961aab"
   dependencies:
-    "@f/equal-array" "^1.2.2"
-    "@f/equal-obj" "^1.2.1"
-    "@f/is-array" "^1.1.1"
-    "@f/is-object" "^1.1.4"
-
-"@f/event-handler@^1.0.1", "@f/event-handler@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@f/event-handler/-/event-handler-1.0.2.tgz#275b1134e016dcd0cba155dfc2f94332c0737422"
-  dependencies:
+    "@f/get-value" "^1.0.1"
+    "@f/has" "^1.0.1"
+    "@f/identity" "^1.1.1"
     "@f/is-array" "^1.1.1"
     "@f/is-function" "^1.1.1"
     "@f/is-object" "^1.1.4"
@@ -154,7 +150,7 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@f/foreach-array/-/foreach-array-1.0.0.tgz#163b0ae67cd1fc18d94c451da9006c3ce1ce6da8"
 
-"@f/foreach-obj@^1.0.1", "@f/foreach-obj@^1.1.1":
+"@f/foreach-obj@^1.0.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@f/foreach-obj/-/foreach-obj-1.1.1.tgz#5ad38a629c0298290a8d06a39f281d979a6804c4"
 
@@ -183,13 +179,11 @@
   dependencies:
     "@f/iterator-symbol" "^1.0.0"
 
-"@f/get-prop@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@f/get-prop/-/get-prop-1.1.1.tgz#525cbe5c037e0e70ce2bf8021eeb862db3aef4f0"
-  dependencies:
-    "@f/is-string" "^1.0.1"
+"@f/get-value@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@f/get-value/-/get-value-1.0.1.tgz#9d50bebe00dd6687033194b60610899df766182e"
 
-"@f/handle-actions@^1.1.1", "@f/handle-actions@^1.1.2":
+"@f/handle-actions@^1.1.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@f/handle-actions/-/handle-actions-1.1.2.tgz#8e6125d97408d71faff15421c4642f20ffbe8cc8"
   dependencies:
@@ -354,6 +348,10 @@
     "@f/is-function" "^1.1.1"
     "@f/map-array" "^1.2.1"
 
+"@f/noop@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@f/noop/-/noop-1.2.0.tgz#4c48b94b4d24dcf66d329e5e25c61ff887d1abbe"
+
 "@f/obj-to-promise@^1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@f/obj-to-promise/-/obj-to-promise-1.2.1.tgz#974928b01ea574605c3eb33392b9cdfff810892d"
@@ -361,10 +359,6 @@
     "@f/curry-once" "^1.0.0"
     "@f/values" "^1.2.0"
     "@f/zip-obj" "^1.0.0"
-
-"@f/object-equal@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@f/object-equal/-/object-equal-1.1.1.tgz#68e017ab6d00cf3a7f373570c001285f610424a7"
 
 "@f/omit-prop@^1.1.2":
   version "1.1.2"
@@ -394,9 +388,32 @@
   dependencies:
     "@f/map-array" "^1.2.1"
 
+"@f/raf-debounce@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@f/raf-debounce/-/raf-debounce-1.0.1.tgz#98863be50d2f3a0f759224bc36b8ea4446975fbd"
+  dependencies:
+    "@f/raf" "^1.0.3"
+
+"@f/raf@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@f/raf/-/raf-1.0.3.tgz#32ddca37de345b20c8c3843018cc51b8f897914d"
+
 "@f/reduce-array@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@f/reduce-array/-/reduce-array-0.2.1.tgz#de8e7b7f837ef1319ea8a35b4ba70169ea7e999f"
+
+"@f/reduce-obj@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@f/reduce-obj/-/reduce-obj-1.0.0.tgz#b4873a5f1627d30f2ee8ecbf994e92fb698c94f9"
+
+"@f/reduce@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@f/reduce/-/reduce-1.0.0.tgz#951f6aefe6303c2ea3eeaebb19557bf98b566faf"
+  dependencies:
+    "@f/is-array" "^1.1.1"
+    "@f/is-object" "^1.1.1"
+    "@f/reduce-array" "^0.2.1"
+    "@f/reduce-obj" "^1.0.0"
 
 "@f/remove-element@^1.0.0":
   version "1.0.0"
@@ -425,7 +442,7 @@
     "@f/is-number" "^1.0.0"
     "@f/is-string" "^1.0.1"
 
-"@f/set-proto@^1.0.0", "@f/set-proto@^1.0.1":
+"@f/set-proto@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@f/set-proto/-/set-proto-1.0.1.tgz#8ed0b2da30908e9575a0233f9f7795a22b1e5052"
   dependencies:
@@ -465,6 +482,13 @@
 "@f/svg-namespace@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@f/svg-namespace/-/svg-namespace-1.0.1.tgz#f6f1a5ce5d3971a4ade91a11d22d4c459acd375f"
+
+"@f/switch@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@f/switch/-/switch-1.0.1.tgz#f7509590ec6679d2a94294e7ad26b9db3e73ab9c"
+  dependencies:
+    "@f/noop" "^1.2.0"
+    "@f/slice" "^1.1.3"
 
 "@f/thunk-to-promise@^1.1.1":
   version "1.1.1"
@@ -690,14 +714,6 @@ babel-cli@^6.18.0:
   optionalDependencies:
     chokidar "^1.0.0"
 
-babel-code-frame@^6.16.0:
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.16.0.tgz#f90e60da0862909d3ce098733b5d3987c97cb8de"
-  dependencies:
-    chalk "^1.1.0"
-    esutils "^2.0.2"
-    js-tokens "^2.0.0"
-
 babel-code-frame@^6.20.0:
   version "6.20.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.20.0.tgz#b968f839090f9a8bc6d41938fb96cb84f7387b26"
@@ -706,33 +722,7 @@ babel-code-frame@^6.20.0:
     esutils "^2.0.2"
     js-tokens "^2.0.0"
 
-babel-core@^6.0.14, babel-core@^6.16.0:
-  version "6.17.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.17.0.tgz#6c4576447df479e241e58c807e4bc7da4db7f425"
-  dependencies:
-    babel-code-frame "^6.16.0"
-    babel-generator "^6.17.0"
-    babel-helpers "^6.16.0"
-    babel-messages "^6.8.0"
-    babel-register "^6.16.0"
-    babel-runtime "^6.9.1"
-    babel-template "^6.16.0"
-    babel-traverse "^6.16.0"
-    babel-types "^6.16.0"
-    babylon "^6.11.0"
-    convert-source-map "^1.1.0"
-    debug "^2.1.1"
-    json5 "^0.4.0"
-    lodash "^4.2.0"
-    minimatch "^3.0.2"
-    path-exists "^1.0.0"
-    path-is-absolute "^1.0.0"
-    private "^0.1.6"
-    shebang-regex "^1.0.0"
-    slash "^1.0.0"
-    source-map "^0.5.0"
-
-babel-core@^6.18.0:
+babel-core@^6.0.14, babel-core@^6.18.0:
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.21.0.tgz#75525480c21c803f826ef3867d22c19f080a3724"
   dependencies:
@@ -754,18 +744,6 @@ babel-core@^6.18.0:
     path-is-absolute "^1.0.0"
     private "^0.1.6"
     slash "^1.0.0"
-    source-map "^0.5.0"
-
-babel-generator@^6.17.0:
-  version "6.17.0"
-  resolved "https://registry.yarnpkg.com/babel-generator/-/babel-generator-6.17.0.tgz#b894e3808beef7800f2550635bfe024b6226cf33"
-  dependencies:
-    babel-messages "^6.8.0"
-    babel-runtime "^6.9.0"
-    babel-types "^6.16.0"
-    detect-indent "^3.0.1"
-    jsesc "^1.3.0"
-    lodash "^4.2.0"
     source-map "^0.5.0"
 
 babel-generator@^6.21.0:
@@ -1248,19 +1226,6 @@ babel-preset-stage-3@^6.17.0:
     babel-plugin-transform-exponentiation-operator "^6.3.13"
     babel-plugin-transform-object-rest-spread "^6.16.0"
 
-babel-register@^6.16.0:
-  version "6.16.3"
-  resolved "https://registry.yarnpkg.com/babel-register/-/babel-register-6.16.3.tgz#7b0c0ca7bfdeb9188ba4c27e5fcb7599a497c624"
-  dependencies:
-    babel-core "^6.16.0"
-    babel-runtime "^6.11.6"
-    core-js "^2.4.0"
-    home-or-tmp "^1.0.0"
-    lodash "^4.2.0"
-    mkdirp "^0.5.1"
-    path-exists "^1.0.0"
-    source-map-support "^0.4.2"
-
 babel-register@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-register/-/babel-register-6.18.0.tgz#892e2e03865078dd90ad2c715111ec4449b32a68"
@@ -1273,14 +1238,14 @@ babel-register@^6.18.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.9.0, babel-runtime@^6.9.1:
+babel-runtime@^6.0.0, babel-runtime@^6.9.0:
   version "6.11.6"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.11.6.tgz#6db707fef2d49c49bfa3cb64efdb436b518b8222"
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.9.5"
 
-babel-runtime@^6.20.0:
+babel-runtime@^6.11.6, babel-runtime@^6.20.0, babel-runtime@^6.9.1:
   version "6.20.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.20.0.tgz#87300bdcf4cd770f09bf0048c64204e17806d16f"
   dependencies:
@@ -1297,21 +1262,7 @@ babel-template@^6.14.0, babel-template@^6.15.0, babel-template@^6.16.0, babel-te
     babylon "^6.11.0"
     lodash "^4.2.0"
 
-babel-traverse@^6.14.0, babel-traverse@^6.15.0, babel-traverse@^6.16.0, babel-traverse@^6.8.0:
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.16.0.tgz#fba85ae1fd4d107de9ce003149cc57f53bef0c4f"
-  dependencies:
-    babel-code-frame "^6.16.0"
-    babel-messages "^6.8.0"
-    babel-runtime "^6.9.0"
-    babel-types "^6.16.0"
-    babylon "^6.11.0"
-    debug "^2.2.0"
-    globals "^8.3.0"
-    invariant "^2.2.0"
-    lodash "^4.2.0"
-
-babel-traverse@^6.21.0:
+babel-traverse@^6.14.0, babel-traverse@^6.15.0, babel-traverse@^6.16.0, babel-traverse@^6.21.0, babel-traverse@^6.8.0:
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.21.0.tgz#69c6365804f1a4f69eb1213f85b00a818b8c21ad"
   dependencies:
@@ -1325,16 +1276,7 @@ babel-traverse@^6.21.0:
     invariant "^2.2.0"
     lodash "^4.2.0"
 
-babel-types@^6.13.0, babel-types@^6.14.0, babel-types@^6.15.0, babel-types@^6.16.0, babel-types@^6.8.0, babel-types@^6.9.0:
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.16.0.tgz#71cca1dbe5337766225c5c193071e8ebcbcffcfe"
-  dependencies:
-    babel-runtime "^6.9.1"
-    esutils "^2.0.2"
-    lodash "^4.2.0"
-    to-fast-properties "^1.0.1"
-
-babel-types@^6.21.0:
+babel-types@^6.13.0, babel-types@^6.14.0, babel-types@^6.15.0, babel-types@^6.16.0, babel-types@^6.21.0, babel-types@^6.8.0, babel-types@^6.9.0:
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.21.0.tgz#314b92168891ef6d3806b7f7a917fdf87c11a4b2"
   dependencies:
@@ -1438,9 +1380,9 @@ brace-expansion@^1.0.0:
     balanced-match "^0.4.1"
     concat-map "0.0.1"
 
-brace@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/brace/-/brace-0.7.0.tgz#90651da5bd486edbb41888dec78afdcd07375b21"
+brace@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/brace/-/brace-0.10.0.tgz#edef4eb9b0928ba1ee5f717ffc157749a6dd5d76"
   dependencies:
     w3c-blob "0.0.1"
 
@@ -1929,10 +1871,6 @@ decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
-deep-diff@0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.4.tgz#aac5c39952236abe5f037a2349060ba01b00ae48"
-
 deep-extend@~0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.1.tgz#efe4113d08085f4e6f9687759810f807469e2253"
@@ -1945,9 +1883,9 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
-delegant@^0.1.11:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/delegant/-/delegant-0.1.11.tgz#24e45caf600e29530c9d51ed417848930fd262bf"
+delegant@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/delegant/-/delegant-0.2.0.tgz#18b8b5489d58bf7191fcf5b2d12faee5f6ec4b9f"
   dependencies:
     "@f/compose" "^1.0.1"
     "@f/dom-events" "^1.0.4"
@@ -1980,14 +1918,6 @@ des.js@^1.0.0:
   dependencies:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
-
-detect-indent@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-3.0.1.tgz#9dc5e5ddbceef8325764b9451b02bc6d54084f75"
-  dependencies:
-    get-stdin "^4.0.1"
-    minimist "^1.1.0"
-    repeating "^1.1.0"
 
 detect-indent@^4.0.0:
   version "4.0.0"
@@ -2318,10 +2248,6 @@ glob@^7.0.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-globals@^8.3.0:
-  version "8.18.0"
-  resolved "https://registry.yarnpkg.com/globals/-/globals-8.18.0.tgz#93d4a62bdcac38cfafafc47d6b034768cb0ffcb4"
-
 globals@^9.0.0:
   version "9.14.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-9.14.0.tgz#8859936af0038741263053b39d0e76ca241e4034"
@@ -2398,13 +2324,6 @@ he@^0.5.0:
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
-
-home-or-tmp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-1.0.0.tgz#4b9f1e40800c3e50c6c27f781676afcce71f3985"
-  dependencies:
-    os-tmpdir "^1.0.1"
-    user-home "^1.1.1"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -2711,10 +2630,6 @@ json-stable-stringify@~0.0.0:
 "json-stringify-safe@>=5.0.0 <5.1.0-0", json-stringify-safe@^5.0.0, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
-
-json5@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-0.4.0.tgz#054352e4c4c80c86c0923877d449de176a732c8d"
 
 json5@^0.5.0:
   version "0.5.1"
@@ -3107,10 +3022,6 @@ path-browserify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
 
-path-exists@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-1.0.0.tgz#d5a8998eb71ef37a74c34eb0d9eba6e878eea081"
-
 path-exists@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-2.1.0.tgz#0feb6c64f0fc518d9a754dd5efb62c7022761f4b"
@@ -3352,9 +3263,9 @@ redux-ephemeral@^0.1.9:
     "@f/omit-prop" "^1.1.2"
     "@f/set-prop" "^1.0.0"
 
-redux-ephemeral@^0.3.7:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/redux-ephemeral/-/redux-ephemeral-0.3.7.tgz#075a543e099596163006069d1b6ff7fc576712ca"
+redux-ephemeral@^0.3.7, redux-ephemeral@^0.3.9:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/redux-ephemeral/-/redux-ephemeral-0.3.9.tgz#c38605c524691691254b23c7a99b104851e333ca"
   dependencies:
     mini-hamt "^1.0.1"
 
@@ -3377,13 +3288,21 @@ redux-flo@^2.2.1:
     "@f/map" "^1.5.2"
     "@f/to-promise" "^1.1.1"
 
-redux-logger@^2.6.1:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-2.7.0.tgz#77f0ee5c473b1440c7e1b3c3c7775e59741c5dbf"
+redux-flo@latest:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/redux-flo/-/redux-flo-2.3.0.tgz#c049f8a2692ba5a10905a1f178223c2f4339822d"
   dependencies:
-    deep-diff "0.3.4"
+    "@f/identity" "^1.1.1"
+    "@f/is-functor" "^1.0.0"
+    "@f/is-generator" "^1.3.2"
+    "@f/is-iterable" "^1.0.1"
+    "@f/is-iterator" "^1.0.1"
+    "@f/is-promise" "^1.1.1"
+    "@f/log-error" "^1.0.0"
+    "@f/map" "^1.5.2"
+    "@f/to-promise" "^1.1.1"
 
-redux-multi@^0.1.91:
+redux-multi@^0.1.12, redux-multi@^0.1.91:
   version "0.1.91"
   resolved "https://registry.yarnpkg.com/redux-multi/-/redux-multi-0.1.91.tgz#c0aaa8408e67d0ef0ec530c0c00669644e10ac96"
 
@@ -3391,7 +3310,7 @@ redux-thunk@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-1.0.3.tgz#778aa0099eea0595031ab6b39165f6670d8d26bd"
 
-redux@^3.5.2:
+redux@^3.5.2, redux@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.6.0.tgz#887c2b3d0b9bd86eca2be70571c27654c19e188d"
   dependencies:
@@ -3444,12 +3363,6 @@ repeat-element@^1.1.2:
 repeat-string@^1.5.2, repeat-string@^1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.5.4.tgz#64ec0c91e0f4b475f90d5b643651e3e6e5b6c2d5"
-
-repeating@^1.1.0:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/repeating/-/repeating-1.1.3.tgz#3d4114218877537494f97f77f9785fab810fa4ac"
-  dependencies:
-    is-finite "^1.0.0"
 
 repeating@^2.0.0:
   version "2.0.1"
@@ -3553,10 +3466,6 @@ shasum@^1.0.0:
   dependencies:
     json-stable-stringify "~0.0.0"
     sha.js "~2.4.4"
-
-shebang-regex@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
 shell-quote@^1.4.2, shell-quote@^1.4.3:
   version "1.6.1"
@@ -3787,6 +3696,16 @@ tar@~2.2.0, tar@~2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
+tcomb-validation@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/tcomb-validation/-/tcomb-validation-3.3.0.tgz#29ada8534203500e90b245eedd0e1a80f1909ba2"
+  dependencies:
+    tcomb "^3.0.0"
+
+tcomb@^3.0.0:
+  version "3.2.20"
+  resolved "https://registry.yarnpkg.com/tcomb/-/tcomb-3.2.20.tgz#823e689dcf3518d82c4b6c890a822aa6916692cd"
+
 term-color@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/term-color/-/term-color-1.0.1.tgz#38e192553a473e35e41604ff5199846bf8117a3a"
@@ -3947,37 +3866,31 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-vdux@^2.4.9:
-  version "2.4.10"
-  resolved "https://registry.yarnpkg.com/vdux/-/vdux-2.4.10.tgz#1a20565bca5f7c1347f119230c3e9751d3087598"
+vdux@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/vdux/-/vdux-3.0.6.tgz#684eac49a423e6a30c69f7811643fbfac9c9b969"
   dependencies:
-    "@f/combine-reducers" "^1.2.1"
-    "@f/curry-once" "^1.3.2"
     "@f/debounce" "^1.0.2"
     "@f/domready" "^1.0.2"
     "@f/empty-element" "^1.0.0"
-    "@f/equal" "^1.0.1"
-    "@f/event-handler" "^1.0.2"
+    "@f/event-handler" "^1.0.4"
     "@f/foreach" "^1.2.2"
-    "@f/foreach-obj" "^1.1.1"
-    "@f/handle-actions" "^1.1.2"
-    "@f/is-dom-loaded" "^1.0.1"
-    "@f/is-object" "^1.1.4"
-    "@f/map" "^1.5.3"
+    "@f/get-value" "^1.0.1"
+    "@f/has" "^1.0.1"
     "@f/queue" "^1.0.2"
-    "@f/set-proto" "^1.0.1"
-    delegant "^0.1.11"
+    "@f/raf-debounce" "^1.0.1"
+    delegant "^0.2.0"
     ev-store "^7.0.0"
     redux "^3.5.2"
+    redux-ephemeral "^0.3.9"
     redux-falsy "^1.0.0"
-    redux-logger "^2.6.1"
+    redux-flo latest
     redux-multi "^0.1.91"
     redux-thunk "^1.0.3"
-    virtex "^0.3.11"
-    virtex-component "^0.4.3"
+    virtex "^0.4.0"
+    virtex-component "^0.5.0"
     virtex-dom "^0.3.12"
-    virtex-element "^0.3.6"
-    virtex-local "^0.4.10"
+    virtex-element "^0.4.1"
     virtex-string "^0.3.6"
 
 verror@1.3.6:
@@ -3986,14 +3899,22 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
-virtex-component@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/virtex-component/-/virtex-component-0.4.3.tgz#4d75d1d15cf5c9eebdac154a3ae5c47a6effc211"
+virtex-component@^0.5.0:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/virtex-component/-/virtex-component-0.5.2.tgz#801d2ef5197c1652bc1f1f33a7b5c232a8b40a31"
   dependencies:
+    "@f/curry-transparently" "^1.0.0"
     "@f/defaults" "^1.0.1"
     "@f/equal-array" "^1.2.2"
     "@f/equal-obj" "^1.2.1"
     "@f/identity" "^1.1.1"
+    "@f/reduce" "^1.0.0"
+    redux "^3.6.0"
+    redux-ephemeral "^0.3.7"
+    redux-falsy "^1.0.0"
+    redux-flo latest
+    redux-multi "^0.1.12"
+    tcomb-validation "^3.3.0"
     virtex "^0.3.8"
 
 virtex-dom@^0.3.12:
@@ -4013,28 +3934,18 @@ virtex-dom@^0.3.12:
     "@f/set-value" "^1.0.0"
     virtex "^0.3.6"
 
-virtex-element@^0.3.6:
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/virtex-element/-/virtex-element-0.3.6.tgz#0913cb855bcb763e74561bf23f050e35c4170fdb"
+virtex-element@^0.4.1:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/virtex-element/-/virtex-element-0.4.2.tgz#96b34bd895202fafa54df4d3badd7c38549a204b"
   dependencies:
     "@f/capitalize" "^1.0.0"
     "@f/dom-events" "^1.0.3"
-    "@f/event-handler" "^1.0.1"
+    "@f/event-handler" "^1.0.3"
     "@f/is-object" "^1.1.1"
     "@f/keychord" "^1.1.1"
     classnames "^2.2.3"
     ev-store "^7.0.0"
     virtex "^0.3.6"
-
-virtex-local@^0.4.10:
-  version "0.4.11"
-  resolved "https://registry.yarnpkg.com/virtex-local/-/virtex-local-0.4.11.tgz#5f7bb174f44edb0f69c34c585fddd819a8e617f8"
-  dependencies:
-    "@f/array-equal" "^1.1.1"
-    "@f/get-prop" "^1.1.1"
-    "@f/object-equal" "^1.1.1"
-    redux-ephemeral "^0.3.7"
-    virtex "^0.3.11"
 
 virtex-string@^0.3.6:
   version "0.3.7"
@@ -4047,9 +3958,19 @@ virtex-string@^0.3.6:
     ent "^2.2.0"
     virtex "^0.3.10"
 
-virtex@^0.3.10, virtex@^0.3.11, virtex@^0.3.6, virtex@^0.3.8:
+virtex@^0.3.10, virtex@^0.3.6, virtex@^0.3.8:
   version "0.3.12"
   resolved "https://registry.yarnpkg.com/virtex/-/virtex-0.3.12.tgz#2e12d890ffd1712dbad3d2ad7e08e5dc189089e8"
+  dependencies:
+    "@f/foreach" "^1.2.2"
+    "@f/is-string" "^1.1.1"
+    "@f/is-undefined" "^1.1.1"
+    "@f/map-array" "^1.2.1"
+    dift "^0.1.11"
+
+virtex@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/virtex/-/virtex-0.4.0.tgz#3a576cce977920cff0390456656be0c3693bbaff"
   dependencies:
     "@f/foreach" "^1.2.2"
     "@f/is-string" "^1.1.1"
