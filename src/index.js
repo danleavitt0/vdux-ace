@@ -142,6 +142,4 @@ function init (props) {
   return editor
 }
 
-console.log(Component)
-
 export default Component
