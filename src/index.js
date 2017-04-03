@@ -83,6 +83,9 @@ const Component = component({
     * setValue ({state}, val) {
       yield state.editor.setValue(val)
     },
+    * scrollToLine ({state}, val) {
+      yield state.editor.scrollToLine(val, true, false)
+    },
     * trace ({props, state, actions}, line) {
       if (state.marker) {
         yield state.editor.getSession().removeMarker(state.marker.id)
