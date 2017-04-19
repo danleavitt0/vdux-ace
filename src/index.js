@@ -73,7 +73,9 @@ const Component = component({
   },
   controller: {
     * onChange ({props, state}) {
-      yield props.onChange(state.editor.getValue())
+      if (state.editor) {
+        yield props.onChange(state.editor.getValue())
+      }
     },
     * initEditor ({actions, props, path}, node) {
       yield actions.setEditor(init({...defaultProps, ...props}))
@@ -81,7 +83,9 @@ const Component = component({
       yield actions.setReady()
     },
     * setValue ({state}, val) {
-      yield state.editor.setValue(val)
+      if (state.editor) {
+        yield state.editor.setValue(val)
+      }
     },
     * scrollToLine ({state}, val) {
       yield state.editor.scrollToLine(val, true, false)
@@ -140,7 +144,6 @@ function init (props) {
   editor.setOption('highlightActiveLine', highlightActiveLine)
   editor.setOption('tabSize', tabSize)
   editor.session.$worker.call('setOptions', [jsOptions])
-  editor.setOption('enableLiveAutocompletion', autocomplete)
   editor.setShowPrintMargin(showPrintMargin)
   return editor
 }
