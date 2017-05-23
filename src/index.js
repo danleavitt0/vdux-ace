@@ -88,7 +88,9 @@ const Component = component({
       }
     },
     * scrollToLine ({state}, val) {
-      yield state.editor.scrollToLine(val, true, false)
+      if (state.editor) {
+        yield state.editor.scrollToLine(val, true, false)
+      }
     },
     * trace ({props, state, actions}, line) {
       if (state.marker) {
