@@ -26,10 +26,6 @@ const defaultProps = {
   wrapEnabled: false
 }
 
-export {
-  mw
-}
-
 const Component = component({
   initialState: {
     ready: false,
@@ -44,16 +40,15 @@ const Component = component({
     if (state.ready && prev.props.activeLine !== props.activeLine) {
       yield actions.trace(props.activeLine)
     }
+    if (state.ready && prev.props.value !== props.value && props.value !== state.editor.getValue()) {
+      yield actions.setValue(props.value)
+    }
   },
   render ({props, state, actions}) {
     const mergeProps = {...defaultProps, ...props}
     const {onFocus, onCopy, onBlur, onPaste} = mergeProps
     const {activeLine} = props
     const {ready} = state
-
-    if (ready && props.ref) {
-      props.ref(actions)
-    }
 
     const divStyle = {
       width: props.width,
@@ -84,7 +79,7 @@ const Component = component({
     },
     * setValue ({state}, val) {
       if (state.editor) {
-        yield state.editor.setValue(val)
+        state.editor.setValue(val)
       }
     },
     * scrollToLine ({state}, val) {
