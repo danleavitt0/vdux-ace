@@ -69,7 +69,7 @@ const Component = component({
   controller: {
     * onChange ({props, state}) {
       if (state.editor) {
-        yield props.onChange(state.editor.getValue())
+        yield props.onChange(state.editor.getValue(), state.editor)
       }
     },
     * initEditor ({actions, props, path}, node) {
