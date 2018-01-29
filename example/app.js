@@ -1,6 +1,5 @@
 /** @jsx element */
 
-import element from 'vdux/element'
 import Ace from '../src/index'
 import createAction from '@f/create-action'
 import vm from 'vm-browserify'
@@ -19,7 +18,7 @@ function initialState () {
   }
 }
 
-function render ({props, state, local}) {
+function render ({ props, state, local }) {
   return (
     <div>
       <Ace
@@ -42,7 +41,9 @@ function reducer (state, action) {
     case runCode.type:
       return {
         ...state,
-        evaluated: vm.runInNewContext(action.payload, sandbox, {filename: 'test'})
+        evaluated: vm.runInNewContext(action.payload, sandbox, {
+          filename: 'test'
+        })
       }
   }
   return state

@@ -1,7 +1,7 @@
 /** @jsx element */
 
-import mw, {setValue as setNewValue, setHandlers} from './middleware'
-import {component, element} from 'vdux'
+import mw, { setValue as setNewValue, setHandlers } from './middleware'
+import { component, element } from 'vdux'
 import ace from 'brace'
 
 const defaultProps = {
@@ -31,24 +31,28 @@ const Component = component({
     ready: false,
     editor: null
   },
-  * afterRender ({props, actions, state}) {
+  * afterRender ({ props, actions, state }) {
     if (!state.ready) {
       yield actions.initEditor()
     }
   },
-  * onUpdate (prev, {state, props, actions}) {
+  * onUpdate (prev, { state, props, actions }) {
     if (state.ready && prev.props.activeLine !== props.activeLine) {
       yield actions.trace(props.activeLine)
     }
-    if (state.ready && prev.props.value !== props.value && props.value !== state.editor.getValue()) {
+    if (
+      state.ready &&
+      prev.props.value !== props.value &&
+      props.value !== state.editor.getValue()
+    ) {
       yield actions.setValue(props.value)
     }
   },
-  render ({props, state, actions}) {
-    const mergeProps = {...defaultProps, ...props}
-    const {onFocus, onCopy, onBlur, onPaste} = mergeProps
-    const {activeLine} = props
-    const {ready} = state
+  render ({ props, state, actions }) {
+    const mergeProps = { ...defaultProps, ...props }
+    const { onFocus, onCopy, onBlur, onPaste } = mergeProps
+    const { activeLine } = props
+    const { ready } = state
 
     const divStyle = {
       width: props.width,
@@ -67,27 +71,32 @@ const Component = component({
     )
   },
   controller: {
-    * onChange ({props, state}) {
+    * onChange ({ props, state }) {
       if (state.editor) {
         yield props.onChange(state.editor.getValue(), state.editor)
       }
     },
-    * initEditor ({actions, props, path}, node) {
-      yield actions.setEditor(init({...defaultProps, ...props}))
-      yield setHandlers({path, reducer: Component.reducer})
+    * initEditor ({ actions, props, path }, node) {
+      yield actions.setEditor(init({ ...defaultProps, ...props }))
+      yield setHandlers({ path, reducer: Component.reducer })
       yield actions.setReady()
     },
-    * setValue ({state}, val) {
+    * onCursorChange ({ props, state }, ...args) {
+      if (state.editor && props.onCursorChange) {
+        yield props.onCursorChange(...args)
+      }
+    },
+    * setValue ({ state }, val) {
       if (state.editor) {
         state.editor.setValue(val)
       }
     },
-    * scrollToLine ({state}, val) {
+    * scrollToLine ({ state }, val) {
       if (state.editor) {
         yield state.editor.scrollToLine(val, true, false)
       }
     },
-    * trace ({props, state, actions}, line) {
+    * trace ({ props, state, actions }, line) {
       if (state.marker) {
         yield state.editor.getSession().removeMarker(state.marker.id)
       }
@@ -99,33 +108,33 @@ const Component = component({
     }
   },
   reducer: {
-    setEditor: (state, editor) => ({editor}),
-    setMarker: (state, marker) => ({marker}),
-    setReady: () => ({ready: true}),
+    setEditor: (state, editor) => ({ editor }),
+    setMarker: (state, marker) => ({ marker }),
+    setReady: () => ({ ready: true })
   },
   middleware: [mw]
 })
 
 function init (props) {
   const {
-      name,
-      onBeforeLoad,
-      mode,
-      theme,
-      fontSize,
-      value,
-      cursorStart,
-      showGutter,
-      wrapEnabled,
-      maxLines,
-      readOnly,
-      highlightActiveLine,
-      tabSize,
-      jsOptions = {},
-      showPrintMargin,
-      keyboardHandler,
-      onLoad,
-      autocomplete = false
+    name,
+    onBeforeLoad,
+    mode,
+    theme,
+    fontSize,
+    value,
+    cursorStart,
+    showGutter,
+    wrapEnabled,
+    maxLines,
+    readOnly,
+    highlightActiveLine,
+    tabSize,
+    jsOptions = {},
+    showPrintMargin,
+    keyboardHandler,
+    onLoad,
+    autocomplete = false
   } = props
 
   const editor = ace.edit(name)
