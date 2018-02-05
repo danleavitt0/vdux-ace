@@ -51,9 +51,6 @@ const Component = component({
   render ({ props, state, actions }) {
     const mergeProps = { ...defaultProps, ...props }
     const { onFocus, onCopy, onBlur, onPaste } = mergeProps
-    const { activeLine } = props
-    const { ready } = state
-
     const divStyle = {
       width: props.width,
       height: props.height
@@ -89,6 +86,7 @@ const Component = component({
     * setValue ({ state }, val) {
       if (state.editor) {
         state.editor.setValue(val)
+        state.editor.clearSelection()
       }
     },
     * scrollToLine ({ state }, val) {
