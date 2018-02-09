@@ -74,8 +74,12 @@ const Component = component({
       }
     },
     * initEditor ({ actions, props, path }, node) {
-      yield actions.setEditor(init({ ...defaultProps, ...props }))
+      const editor = init({ ...defaultProps, ...props })
+      yield actions.setEditor(editor)
       yield setHandlers({ path, reducer: Component.reducer })
+      if (props.onInit) {
+        yield props.onInit(editor)
+      }
       yield actions.setReady()
     },
     * onCursorChange ({ props, state }, ...args) {
